@@ -1,0 +1,21 @@
+[project]
+name = "schema-evolution-advisor"
+version = "0.1.0"
+description = "Analyze Alembic migration files for schema change risks"
+requires-python = ">=3.11"
+dependencies = [
+    "rich>=13.0",
+]
+
+[project.scripts]
+schema-advisor = "schema_evolution_advisor.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/schema_evolution_advisor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
