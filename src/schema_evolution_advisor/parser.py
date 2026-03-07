@@ -64,7 +64,7 @@ def is_alembic_migration(path: Path) -> bool:
     try:
         content = path.read_text()
         return "revision" in content and ("def upgrade" in content or "def downgrade" in content)
-    except Exception:
+    except (OSError, UnicodeDecodeError):
         return False
 
 
