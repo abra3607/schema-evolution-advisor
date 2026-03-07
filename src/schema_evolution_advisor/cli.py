@@ -8,7 +8,7 @@ from .analyzer import analyze, has_dangerous, has_cautious_or_dangerous
 from .report import render_table, render_json
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="schema-advisor",
         description="Analyze Alembic migrations for schema change risks",
@@ -34,7 +34,7 @@ def main() -> int:
         action="version",
         version=f"%(prog)s {__version__}",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     path: Path = args.path
     if not path.exists():
